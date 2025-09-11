@@ -15,5 +15,5 @@ public interface I_User {
 
     List<User> filterByCampus(String campus);
 
-    void statisticalizeByMountainPeak();
+    void statisticalByMountainPeak();
 }
