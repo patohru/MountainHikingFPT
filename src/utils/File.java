@@ -30,7 +30,7 @@ public class File {
         ArrayList<Object> list = new ArrayList<>();
 
         try {
-            Object obj = null;
+            Object obj;
             while(fis.available() > 0) {
                 obj = (Object) ois.readObject();
                 list.add(obj);
