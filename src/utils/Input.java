@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Input {
     public static String getString(String welcome) {
         boolean check = true;
-        String result = "";
+        String result;
 
         do {
             Scanner sc = new Scanner(System.in);
@@ -53,6 +53,22 @@ public class Input {
         }
 
         return newData;
+    }
+
+    public static String checkValidString(String welcome, String cases) {
+        String data;
+
+        do {
+            data = getString(welcome);
+
+            if(Validation.isValid(data, cases)) {
+                break;
+            }
+
+            System.out.println("Invalid value for " + cases);
+        } while(true);
+
+        return data;
     }
 
     public static boolean confirmYesNo(String welcome) {
