@@ -3,11 +3,40 @@ package controllers;
 import models.I_User;
 import models.User;
 
+import utils.Files;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class UserController extends ArrayList<User> implements I_User {
+    public void readUser() {
+        this.clear();
+        List<Object> list = new ArrayList<>();
+        list = Files.readFromFile("registrations.dat");
+
+        for(Object obj : list) {
+            if(obj instanceof User) {
+                this.add((User) obj);
+            }
+        }
+    }
+
+    public boolean writeUser() {
+        List<Object> list = new ArrayList<>();
+        for(User u : this) {
+            list.add((Object) u);
+        }
+
+        try {
+            Files.writeListObjectToFile("registrations.dat", list);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
     @Override
     public boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode) {
         String checkPhone = "^(?:(?:0|(?:\\+84|84))(?:32|33|34|35|36|37|38|39|86|96|97|98|81|82|83|84|85|88|91|94))\\d{7}$\n";
