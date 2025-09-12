@@ -24,22 +24,19 @@ public class Files {
         return result;
     }
 
-    public static List<Object> readFromFile(String path) throws IOException {
-        FileInputStream fis = new FileInputStream(path);
-        ObjectInputStream ois = new ObjectInputStream(fis);
+    public static List<Object> readFromFile(String path) {
+        File file = new File(path);
+        if(!file.exists() || file.length() == 0) return new ArrayList<>();
+
         ArrayList<Object> list = new ArrayList<>();
 
-        try {
-            Object obj;
-            while(fis.available() > 0) {
-                obj = (Object) ois.readObject();
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            Object obj = ois.readObject();
+            if(obj instanceof List) {
                 list.add(obj);
             }
         } catch (ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
-        } finally {
-            ois.close();
-            fis.close();
         }
 
         return list;
