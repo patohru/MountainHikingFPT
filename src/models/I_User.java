@@ -3,7 +3,7 @@ package models;
 import java.util.List;
 
 public interface I_User {
-    boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode, Double tuitionFee);
+    boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode);
 
     boolean update(String studentID, String name, String phoneNumber, String email, String mountainCode, Double tuitionFee);
 
