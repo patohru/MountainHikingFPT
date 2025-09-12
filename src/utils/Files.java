@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class File {
+public class Files {
     public static boolean writeListObjectToFile(String path, List<Object> list) throws IOException {
         boolean result = false;
         FileOutputStream file = new FileOutputStream(path);
