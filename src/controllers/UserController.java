@@ -9,8 +9,9 @@ import java.util.List;
 
 public class UserController extends ArrayList<User> implements I_User {
     @Override
-    public boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode, Double tuitionFee) {
+    public boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode) {
         String checkPhone = "^(?:(?:0|(?:\\+84|84))(?:32|33|34|35|36|37|38|39|86|96|97|98|81|82|83|84|85|88|91|94))\\d{7}$\n";
+        double tuitionFee;
 
         try {
             if(phoneNumber.matches(checkPhone)) {
