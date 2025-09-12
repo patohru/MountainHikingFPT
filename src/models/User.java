@@ -11,6 +11,8 @@ public class User implements Serializable {
     private String mountainCode;
     private double tuitionFee;
 
+    public User() {}
+
     public User(String studentID, String name, String phoneNumber, String email, String mountainCode, double tuitionFee) {
         StudentID = studentID;
         this.name = name;
