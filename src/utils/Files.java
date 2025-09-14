@@ -44,7 +44,7 @@ public class Files {
             throw new RuntimeException(e);
         } finally {
             try {
-                fis.close();
+                if(fis != null) fis.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
