@@ -48,6 +48,7 @@ public class UserController extends ArrayList<User> implements I_User {
                 return false;
             }
 
+            User newUser = new User(studentID, name, phoneNumber, email, mountainCode, tuitionFee);
             this.add(newUser);
         } catch (Exception e) {
             return false;

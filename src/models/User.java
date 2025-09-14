@@ -72,13 +72,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "StudentID='" + StudentID + '\'' +
-                ", name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", mountainCode='" + mountainCode + '\'' +
-                ", tuitionFee=" + tuitionFee +
-                '}';
+        return String.format("%-13s | %-17s | %-10s | MT%-7s | %,-10.0f", StudentID, name, phoneNumber, mountainCode, tuitionFee);
     }
 }
