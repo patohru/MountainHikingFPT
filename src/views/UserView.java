@@ -24,7 +24,7 @@ public class UserView {
         String name = Input.checkValidString("Enter Name: ", "name");
         String phone = Input.checkValidString("Enter Phone Number: ", "phone");
         String email = Input.checkValidString("Enter Email: ", "email");
-        String mountainCode = Input.getString("Enter Mountain Code: ");
+        String mountainCode = Input.checkValidString("Enter Mountain Code: ", "mountain_code");
 
         return userController.create(studentID, name, phone, email, mountainCode);
     }

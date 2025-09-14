@@ -11,7 +11,6 @@ public class Validation {
 
 
     public static boolean isValid(String arg, String cases) {
-        mountainController.readMountain();
 
         boolean result = false;
         switch (cases) {
@@ -29,6 +28,7 @@ public class Validation {
                 result = arg.matches(Validation.EMAIL);
                 break;
             case "mountain_code":
+                mountainController.readMountain();
                 result = mountainController.getMountainCode(arg);
                 break;
         }
