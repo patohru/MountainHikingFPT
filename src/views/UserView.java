@@ -29,6 +29,37 @@ public class UserView {
         return userController.create(studentID, name, phone, email, mountainCode);
     }
 
+    public boolean getAllUser() {
+        List<User> userList = userController.getAllUser();
+
+        if(userList.isEmpty()) {
+            return false;
+        } else {
+            int line = 71;
+            for(int i = 0; i < line; i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+
+            System.out.println("Student ID    | Name              | Phone      | Peak Code | Fee       ");
+
+            for(int i = 0; i < line; i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+
+            for(User u : userList) {
+                System.out.println(u.toString());
+            }
+
+            for(int i = 0; i < line; i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+            return true;
+        }
+    }
+
     public boolean saveData() {
         return userController.writeUser();
     }

@@ -33,10 +33,15 @@ public class Main {
                     } else {
                         System.out.println("Failed to create user");
                     }
+                    Input.promptEnterKey();
                     break;
                 case 2:
                     break;
                 case 3:
+                    if(!userView.getAllUser()) {
+                        System.out.println("No students have registered yet.");
+                    };
+                    Input.promptEnterKey();
                     break;
                 case 4:
                     break;
