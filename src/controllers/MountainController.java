@@ -25,7 +25,6 @@ public class MountainController extends ArrayList<Mountain> {
                 Mountain mountain = new Mountain(mountainCode, mountainName, province, description);
                 this.add(mountain);
             }
-            System.out.println(this);
         } catch (IOException e) {
             System.out.println("Failed to read file");
         }

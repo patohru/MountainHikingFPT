@@ -30,8 +30,7 @@ public class UserController extends ArrayList<User> implements I_User {
         }
 
         try {
-            Files.writeListObjectToFile("registrations.dat", list);
-            return true;
+            return Files.writeListObjectToFile("registrations.dat", list);
         } catch (IOException e) {
             return false;
         }

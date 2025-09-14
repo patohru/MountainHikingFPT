@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
@@ -32,7 +33,7 @@ public class Input {
                 System.out.println(welcome);
                 result = sc.nextInt();
                 check = false;
-            } catch (NumberFormatException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Input is not a number");
             }
 
