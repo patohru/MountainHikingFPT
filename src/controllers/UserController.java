@@ -57,7 +57,7 @@ public class UserController extends ArrayList<User> implements I_User {
     }
 
     @Override
-    public boolean update(String studentID, String name, String phoneNumber, String email, String mountainCode, Double tuitionFee) {
+    public boolean update(String studentID, String name, String phoneNumber, String email, String mountainCode) {
         User user = getUserById(studentID);
 
         try {

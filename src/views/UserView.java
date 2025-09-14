@@ -29,6 +29,24 @@ public class UserView {
         return userController.create(studentID, name, phone, email, mountainCode);
     }
 
+    public boolean update() {
+        String studentID = Input.getString("Enter student code: ");
+        User user = userController.getUserById(studentID);
+
+        if(user == null) {
+            System.out.println("The student has not registered yet.");
+            return false;
+        }
+
+        String name = Input.checkValidUpdateString("Update name: ", user.getName(), "name");
+        String phone = Input.checkValidUpdateString("Update phone number: ", user.getPhoneNumber(), "phone");
+        String email = Input.checkValidUpdateString("Update email: ", user.getEmail(), "email");
+        String mountainCode = Input.checkValidUpdateString("Update mountain code: ", user.getMountainCode(), "mountain_code");
+
+        userController.update(studentID, name, phone, email, mountainCode);
+        return true;
+    }
+
     public boolean getAllUser() {
         List<User> userList = userController.getAllUser();
 

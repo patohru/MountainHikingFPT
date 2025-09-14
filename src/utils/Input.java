@@ -56,6 +56,25 @@ public class Input {
         return newData;
     }
 
+    public static String checkValidUpdateString(String welcome, String oldData, String cases) {
+        String newData = oldData;
+        String data = "";
+
+        do {
+            data = updateString(welcome, newData);
+
+            if(!data.isEmpty() && Validation.isValid(data, cases)) {
+                newData = data;
+                break;
+            }
+
+            System.out.println("Invalid input for " + cases);
+        } while(true);
+
+        return newData;
+    }
+
+
     public static String checkValidString(String welcome, String cases) {
         String data;
 

@@ -36,6 +36,11 @@ public class Main {
                     Input.promptEnterKey();
                     break;
                 case 2:
+                    if(userView.update()) {
+                        System.out.println("Successfully update user");
+                    } else {
+                        System.out.println("Failed to update user");
+                    }
                     break;
                 case 3:
                     if(!userView.getAllUser()) {
