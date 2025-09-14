@@ -1,18 +1,22 @@
 package views;
 
+import controllers.MountainController;
 import controllers.UserController;
 import models.User;
 import utils.Input;
 import utils.Validation;
 
 import java.io.EOFException;
+import java.util.List;
 
 public class UserView {
     private final User user = new User();
     private static final UserController userController = new UserController();
+    private static final MountainController mountainController = new MountainController();
 
     public void init() {
         userController.readUser();
+        mountainController.readMountain();
     }
 
     public boolean create() {

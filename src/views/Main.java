@@ -2,8 +2,6 @@ package views;
 
 import utils.Input;
 
-import java.io.EOFException;
-
 public class Main {
     public static void main(String[] args) {
         int options;
