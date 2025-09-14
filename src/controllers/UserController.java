@@ -38,19 +38,13 @@ public class UserController extends ArrayList<User> implements I_User {
 
     @Override
     public boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode) {
-        String checkPhone = "^(?:(?:0|(?:\\+84|84))(?:32|33|34|35|36|37|38|39|86|96|97|98|81|82|83|84|85|88|91|94))\\d{7}$\n";
+        String checkPhone = "^0(?:32|33|34|35|36|37|38|39|86|96|97|98|81|82|83|84|85|88|91|94)\\d{7}$";
         double tuitionFee;
 
         try {
-            if(phoneNumber.matches(checkPhone)) {
-                tuitionFee = 6000000.0 * 0.35;
-            } else {
-                tuitionFee = 6000000.0;
-            }
-
-            User newUser = new User(studentID, name, phoneNumber, email, mountainCode, tuitionFee);
-            if(!getUserByName(name).isEmpty()) {
-                System.out.println(name + " already exists");
+            tuitionFee = phoneNumber.matches(checkPhone) ?  6000000.0 - (6000000.0 * 0.35) : 6000000.0;
+            if(getUserById(studentID) != null) {
+                System.out.println("IDs already exist");
                 return false;
             }
 
