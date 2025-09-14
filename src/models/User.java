@@ -19,7 +19,7 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.mountainCode = mountainCode;
-        this.tuitionFee = 6000000.0;
+        this.tuitionFee = tuitionFee;
     }
 
     public String getStudentID() {
