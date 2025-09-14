@@ -25,20 +25,30 @@ public class Files {
     }
 
     public static List<Object> readFromFile(String path) {
-        File file = new File(path);
-        if(!file.exists() || file.length() == 0) return new ArrayList<>();
+        FileInputStream fis = null;
+        try {
+            File file = new File(path);
+            if(!file.exists() || file.length() == 0) return new ArrayList<>();
 
-        ArrayList<Object> list = new ArrayList<>();
+            fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            Object obj = ois.readObject();
-            if(obj instanceof List) {
+            ArrayList<Object> list = new ArrayList<>();
+            while(fis.available() > 0) {
+                Object obj = ois.readObject();
                 list.add(obj);
             }
-        } catch (ClassNotFoundException | IOException e) {
+
+            return list;
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        return list;
     }
 }
