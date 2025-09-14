@@ -20,11 +20,12 @@ public class MountainController extends ArrayList<Mountain> {
                 String mountainCode = data[0].trim();
                 String mountainName = data[1].trim();
                 String province = data[2].trim();
-//                String description = data[3] == null ? "" : data[3].trim();
+                String description = data[3] == null ? "" : data[3].trim();
 
-                Mountain mountain = new Mountain(mountainCode, mountainName, province, "");
+                Mountain mountain = new Mountain(mountainCode, mountainName, province, description);
                 this.add(mountain);
             }
+            System.out.println(this);
         } catch (IOException e) {
             System.out.println("Failed to read file");
         }
