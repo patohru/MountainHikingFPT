@@ -13,7 +13,7 @@ import java.util.List;
 public class UserController extends ArrayList<User> implements I_User {
     public void readUser() {
         this.clear();
-        List<Object> list = new ArrayList<>();
+        List<Object> list;
         list = Files.readFromFile("registrations.dat");
 
         for(Object obj : list) {
@@ -79,7 +79,22 @@ public class UserController extends ArrayList<User> implements I_User {
 
     @Override
     public boolean delete(String studentID) {
-        return false;
+        List<Object> users = getAllUserExcept(studentID);
+        User student = getUserById(studentID);
+        if(getUserById(studentID) == null) return false;
+
+        try {
+            Files.writeListObjectToFile("temp.dat", users);
+            File oldFile = new File("registrations.dat");
+            oldFile.delete();
+            new File("temp.dat").renameTo(oldFile);
+
+        } catch (IOException e) {
+            return false;
+        }
+
+        readUser();
+        return true;
     }
 
     @Override
@@ -116,5 +131,17 @@ public class UserController extends ArrayList<User> implements I_User {
     @Override
     public void statisticalByMountainPeak() {
 
+    }
+
+    public List<Object> getAllUserExcept(String studentID) {
+        List<Object> users = new ArrayList<>();
+
+        for(User u : this) {
+            if(!u.getStudentID().equals(studentID)) {
+                users.add(u);
+            }
+        }
+
+        return users;
     }
 }
