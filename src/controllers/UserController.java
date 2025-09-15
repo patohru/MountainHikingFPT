@@ -101,9 +101,9 @@ public class UserController extends ArrayList<User> implements I_User {
     @Override
     public List<User> getUserByName(String name) {
         List<User> users = new ArrayList<>();
-
+        String username = name.trim().toLowerCase();
         for(User u : this) {
-            if(u.getName().contains(name.toUpperCase()) || u.getName().contains(name.toLowerCase())) {
+            if(u.getName() != null && u.getName().trim().toLowerCase().contains(username)) {
                 users.add(u);
             }
         }
