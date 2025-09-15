@@ -62,27 +62,20 @@ public class UserView {
         if(userList.isEmpty()) {
             return false;
         } else {
-            int line = 71;
-            for(int i = 0; i < line; i++) {
-                System.out.print("-");
-            }
-            System.out.println();
+            displayStudentsInfo(userList);
+            return true;
+        }
+    }
 
-            System.out.println("Student ID    | Name              | Phone      | Peak Code | Fee       ");
+    public boolean getUserByName() {
+        String name = Input.getString("Enter student name: ");
+        List<User> foundUser = userController.getUserByName(name);
 
-            for(int i = 0; i < line; i++) {
-                System.out.print("-");
-            }
-            System.out.println();
+        if(foundUser.isEmpty()) {
+            return false;
+        } else {
+            displayStudentsInfo(foundUser);
 
-            for(User u : userList) {
-                System.out.println(u.toString());
-            }
-
-            for(int i = 0; i < line; i++) {
-                System.out.print("-");
-            }
-            System.out.println();
             return true;
         }
     }
@@ -112,6 +105,30 @@ public class UserView {
         }
 
         return true;
+    }
+
+    public void displayStudentsInfo(List<User> userList) {
+        int line = 71;
+        for(int i = 0; i < line; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        System.out.println("Student ID    | Name              | Phone      | Peak Code | Fee       ");
+
+        for(int i = 0; i < line; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        for(User u : userList) {
+            System.out.println(u.toString());
+        }
+
+        for(int i = 0; i < line; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     public boolean saveData() {
