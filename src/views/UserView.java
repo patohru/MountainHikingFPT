@@ -47,6 +47,17 @@ public class UserView {
         return true;
     }
 
+    public boolean delete() {
+        String userID = Input.getString("Enter student ID: ");
+        if(!displayDeleteStudent(userID)) return false;
+
+        if(Input.confirmYesNo("Are you sure you want to delete this registration? (Y/N): ")) {
+            userController.delete(userID);
+        }
+
+        return true;
+    }
+
     public boolean getAllUser() {
         List<User> userList = userController.getAllUser();
 
@@ -76,6 +87,33 @@ public class UserView {
             System.out.println();
             return true;
         }
+    }
+
+    public boolean displayDeleteStudent(String studentID) {
+        User user = userController.getUserById(studentID);
+
+        if(user == null) {
+            return false;
+        } else {
+            int line = 41;
+            for(int i = 0; i < line; i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+
+            System.out.printf("%-10s: %s%n", "Student ID", user.getStudentID());
+            System.out.printf("%-10s: %s%n", "Name", user.getName());
+            System.out.printf("%-10s: %s%n", "Phone", user.getPhoneNumber());
+            System.out.printf("%-10s: MT%s%n", "Mountain", user.getMountainCode());
+            System.out.printf("%-10s: %s%n", "Fee", user.getTuitionFee());
+
+            for(int i = 0; i < line; i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+
+        return true;
     }
 
     public boolean saveData() {

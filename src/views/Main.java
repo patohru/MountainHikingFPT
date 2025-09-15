@@ -49,6 +49,12 @@ public class Main {
                     Input.promptEnterKey();
                     break;
                 case 4:
+                    if(userView.delete()) {
+                        System.out.println("The registration has been successfully deleted.");
+                    } else {
+                        System.out.println("This student has not registered yet.");
+                    }
+                    Input.promptEnterKey();
                     break;
                 case 5:
                     break;
@@ -63,6 +69,7 @@ public class Main {
                     } else {
                         System.out.println("Failled to save dat");
                     }
+                    Input.promptEnterKey();
                     break;
                 case 9:
                     if(Input.confirmYesNo(isSave ? "Are you sure you want to exit? (Y/N)" : "Are you sure you want to exit without saving? (Y/N)")) {
