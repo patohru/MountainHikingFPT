@@ -58,6 +58,10 @@ public class Main {
                     Input.promptEnterKey();
                     break;
                 case 5:
+                    if(!userView.getUserByName()) {
+                        System.out.println("This student has not registered yet");
+                    }
+                    Input.promptEnterKey();
                     break;
                 case 6:
                     break;
