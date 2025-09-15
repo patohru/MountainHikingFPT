@@ -41,6 +41,7 @@ public class Main {
                     } else {
                         System.out.println("Failed to update user");
                     }
+                    Input.promptEnterKey();
                     break;
                 case 3:
                     if(!userView.getAllUser()) {
