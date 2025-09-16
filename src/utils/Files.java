@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class File {
+public class Files {
     public static boolean writeListObjectToFile(String path, List<Object> list) throws IOException {
         boolean result = false;
         FileOutputStream file = new FileOutputStream(path);
@@ -24,24 +24,31 @@ public class File {
         return result;
     }
 
-    public static List<Object> readFromFile(String path) throws IOException {
-        FileInputStream fis = new FileInputStream(path);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        ArrayList<Object> list = new ArrayList<>();
-
+    public static List<Object> readFromFile(String path) {
+        FileInputStream fis = null;
         try {
-            Object obj;
+            File file = new File(path);
+            if(!file.exists() || file.length() == 0) return new ArrayList<>();
+
+            fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            ArrayList<Object> list = new ArrayList<>();
             while(fis.available() > 0) {
-                obj = (Object) ois.readObject();
+                Object obj = ois.readObject();
                 list.add(obj);
             }
-        } catch (ClassNotFoundException | IOException e) {
+
+            return list;
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
-            ois.close();
-            fis.close();
+            try {
+                if(fis != null) fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        return list;
     }
 }

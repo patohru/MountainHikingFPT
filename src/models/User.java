@@ -11,13 +11,15 @@ public class User implements Serializable {
     private String mountainCode;
     private double tuitionFee;
 
+    public User() {}
+
     public User(String studentID, String name, String phoneNumber, String email, String mountainCode, double tuitionFee) {
         StudentID = studentID;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.mountainCode = mountainCode;
-        this.tuitionFee = 6000000.0;
+        this.tuitionFee = tuitionFee;
     }
 
     public String getStudentID() {
@@ -70,13 +72,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "StudentID='" + StudentID + '\'' +
-                ", name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", mountainCode='" + mountainCode + '\'' +
-                ", tuitionFee=" + tuitionFee +
-                '}';
+        return String.format("%-13s | %-17s | %-10s | MT%-7s | %,-10.0f", StudentID, name, phoneNumber, mountainCode, tuitionFee);
     }
 }

@@ -3,9 +3,9 @@ package models;
 import java.util.List;
 
 public interface I_User {
-    boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode, String tuitionFee);
+    boolean create(String studentID, String name, String phoneNumber, String email, String mountainCode);
 
-    boolean update(String studentID, String name, String phoneNumber, String email, String mountainCode, String tuitionFee);
+    boolean update(String studentID, String name, String phoneNumber, String email, String mountainCode);
 
     List<User> getAllUser();
 
@@ -16,4 +16,6 @@ public interface I_User {
     List<User> filterByCampus(String campus);
 
     void statisticalByMountainPeak();
+
+    User getUserById(String studentID);
 }
