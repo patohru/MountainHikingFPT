@@ -70,6 +70,8 @@ public class Main {
                     Input.promptEnterKey();
                     break;
                 case 7:
+                    userView.displayStatisticByMountain();
+                    Input.promptEnterKey();
                     break;
                 case 8:
                     if(userView.saveData()) {

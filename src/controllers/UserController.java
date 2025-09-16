@@ -1,5 +1,7 @@
 package controllers;
 
+import controllers.StatisticalController;
+
 import models.I_User;
 import models.User;
 
@@ -139,7 +141,8 @@ public class UserController extends ArrayList<User> implements I_User {
 
     @Override
     public void statisticalByMountainPeak() {
-
+        StatisticalController statistics = new StatisticalController(this);
+        statistics.show();
     }
 
     public List<Object> getAllUserExcept(String studentID) {
