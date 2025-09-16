@@ -64,6 +64,10 @@ public class Main {
                     Input.promptEnterKey();
                     break;
                 case 6:
+                    if(!userView.filterStudentByCampus()) {
+                        System.out.println("No student have registered under this campus");
+                    }
+                    Input.promptEnterKey();
                     break;
                 case 7:
                     break;

@@ -80,6 +80,23 @@ public class UserView {
         }
     }
 
+    public boolean filterStudentByCampus() {
+        String campus = Input.getString("Enter caompus: ");
+        List<User> filteredStudent = userController.filterByCampus(campus);
+
+        if(filteredStudent.isEmpty()) {
+            return false;
+        }
+
+        displayStudentsInfo(filteredStudent);
+
+        return true;
+    }
+
+    public void displayStatisticByMountain() {
+        userController.statisticalByMountainPeak();
+    }
+
     public boolean displayDeleteStudent(String studentID) {
         User user = userController.getUserById(studentID);
 

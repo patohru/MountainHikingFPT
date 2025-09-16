@@ -126,7 +126,15 @@ public class UserController extends ArrayList<User> implements I_User {
 
     @Override
     public List<User> filterByCampus(String campus) {
-        return Collections.emptyList();
+        List<User> filterUsers = new ArrayList<>();
+
+        for(User u : this) {
+            String studentCampus = u.getStudentID().substring(0, 2);
+            if(campus.equals(studentCampus)) {
+                filterUsers.add(u);
+            }
+        }
+        return filterUsers;
     }
 
     @Override
